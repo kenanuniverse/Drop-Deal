@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Drop Deal Mockup</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <a class="brand" href="#shop" data-route="shop" aria-label="Drop Deal ana sayfa">
+        <img src="./dd tam logo son.png" alt="Drop Deal" />
+      </a>
+      <nav class="main-nav" aria-label="Ana menü">
+        <button class="nav-button active" data-route="shop">Alışveriş</button>
+        <button class="nav-button" data-route="cart">Sepet</button>
+        <button class="nav-button" data-route="app">Drop App</button>
+        <button class="nav-button" data-route="seller">Satıcı Paneli</button>
+      </nav>
+      <div class="header-actions">
+        <button class="language-toggle" id="languageToggle" type="button" aria-label="Dil değiştir">
+          <span>TR</span>
+          <strong>EN</strong>
+        </button>
+        <button class="id-chip" data-route="app" type="button">
+          <span class="chip-label">Drop ID</span>
+          <strong id="headerDropId">DD-0000</strong>
+        </button>
+        <button class="cart-chip" data-route="cart" type="button">
+          Sepet <strong id="cartCount">0</strong>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="view active" id="shopView" data-view="shop">
+        <div class="shop-shell">
+          <aside class="filters">
+            <div class="panel-title">
+              <span>Market</span>
+              <strong id="visibleCount">0 ürün</strong>
+            </div>
+            <label class="input-wrap">
+              <span>Ürün ara</span>
+              <input id="searchInput" type="search" placeholder="telefon, kahve, ayakkabı..." />
+            </label>
+            <label class="input-wrap">
+              <span>Kategori</span>
+              <select id="categoryFilter"></select>
+            </label>
+            <label class="input-wrap">
+              <span>Sıralama</span>
+              <select id="sortFilter">
+                <option value="recommended">Drop AI önceliği</option>
+                <option value="priceAsc">Fiyat artan</option>
+                <option value="priceDesc">Fiyat azalan</option>
+              </select>
+            </label>
+            <div class="drop-id-card compact">
+              <div>
+                <span class="eyebrow">Bağlı kimlik</span>
+                <h2 id="sideDropId">Drop ID</h2>
+              </div>
+              <div class="score-ring">
+                <span id="sideScore">742</span>
+                <small>puan</small>
+              </div>
+              <p>Sadakat ve bozulan söz verisi Drop AI indirimlerini anlık etkiler.</p>
+            </div>
+          </aside>
+
+          <section class="product-area">
+            <div class="section-heading">
+              <div>
+                <span class="eyebrow">Canlı mağaza mockup</span>
+                <h1>Drop Deal uyumlu alışveriş sitesi</h1>
+              </div>
+              <p>
+                Sepette ürün adedinin ve iptal aksiyonunun yanına Drop Deal butonu gelir; teklif, Drop ID ile doğrulanır.
+              </p>
+            </div>
+            <div class="product-grid" id="productGrid"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="cartView" data-view="cart">
+        <div class="cart-layout">
+          <section class="cart-main">
+            <div class="section-heading">
+              <div>
+                <span class="eyebrow">Sepet deneyimi</span>
+                <h1>Drop Deal teklifli sepet</h1>
+              </div>
+              <p>Logo butonuna basıldığında Drop AI ürün, X Engine ve Drop ID verilerini eşleştirir.</p>
+            </div>
+            <div id="cartItems" class="cart-items"></div>
+          </section>
+          <aside class="checkout-panel">
+            <div class="panel-title">
+              <span>Özet</span>
+              <strong id="cartTotal">₺0</strong>
+            </div>
+            <div class="summary-list">
+              <div><span>Ürün toplamı</span><strong id="summarySubtotal">₺0</strong></div>
+              <div><span>Drop indirim sözü</span><strong id="summaryDrop">₺0</strong></div>
+              <div><span>Bugün ödenecek</span><strong id="summaryDue">₺0</strong></div>
+            </div>
+            <button id="completeDropOrder" class="primary-action" type="button">Drop ID ile doğrula</button>
+            <p class="fine-print">
+              Bu prototipte doğrulama telefon uygulaması animasyonu ile simüle edilir.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="view" id="appView" data-view="app">
+        <div class="app-layout">
+          <section class="phone-shell" aria-label="Drop App">
+            <div class="phone-top">
+              <span></span>
+              <strong>Drop App</strong>
+              <span></span>
+            </div>
+            <div class="phone-profile">
+              <img src="./dd logo.png" alt="" />
+              <div>
+                <span class="eyebrow">Aktif tokenli bağlantı</span>
+                <h2 id="appDropId">Drop ID</h2>
+              </div>
+            </div>
+            <div class="app-metrics">
+              <div><span>Seviye</span><strong id="appTier">Gold</strong></div>
+              <div><span>Sadakat</span><strong id="appScore">742</strong></div>
+              <div><span>Söz</span><strong id="appPromiseRate">%94</strong></div>
+            </div>
+            <div class="mobile-section-title">Aktif Drop Deal işlemleri</div>
+            <div id="appDeals" class="app-deals"></div>
+          </section>
+
+          <section class="app-copy">
+            <div class="section-heading">
+              <div>
+                <span class="eyebrow">Müşteri tarafı</span>
+                <h1>Drop App durumu ve erken sipariş</h1>
+              </div>
+              <p>
+                Drop App, seçilen indirim sözünü, kalan süreyi, erken sipariş fiyatını ve Drop ID puan etkisini gösterir.
+              </p>
+            </div>
+            <div class="insight-grid" id="customerInsights"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="sellerView" data-view="seller">
+        <div class="seller-workspace" id="sellerWorkspace"></div>
+      </section>
+    </main>
+
+    <div class="modal-backdrop" id="verificationModal" aria-hidden="true">
+      <section class="verify-card" role="dialog" aria-modal="true" aria-labelledby="verifyTitle">
+        <button class="modal-close" id="closeVerify" type="button" aria-label="Kapat">×</button>
+        <img src="./dd logo.png" alt="" />
+        <span class="eyebrow">Drop ID doğrulaması</span>
+        <h2 id="verifyTitle">Telefondaki Drop App işlemi onaylıyor</h2>
+        <div class="verify-progress"><span id="verifyBar"></span></div>
+        <p id="verifyText">Token eşleştiriliyor...</p>
+      </section>
+    </div>
+
+    <div class="modal-backdrop" id="earlyOrderModal" aria-hidden="true">
+      <section class="early-modal" role="dialog" aria-modal="true" aria-labelledby="earlyTitle">
+        <button class="modal-close" id="closeEarlyOrder" type="button" aria-label="Kapat">×</button>
+        <div id="earlyOrderContent"></div>
+      </section>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

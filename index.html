@@ -19,6 +19,7 @@
         <button class="nav-button" data-route="seller">Satıcı Paneli</button>
       </nav>
       <div class="header-actions">
+        <button class="help-toggle" id="showTutorial" type="button" title="Drop Deal hakkında" aria-label="Drop Deal hakkında">?</button>
         <button class="language-toggle" id="languageToggle" type="button" aria-label="Dil değiştir">
           <span>TR</span>
           <strong>EN</strong>
@@ -62,11 +63,10 @@
                 <span class="eyebrow">Bağlı kimlik</span>
                 <h2 id="sideDropId">Drop ID</h2>
               </div>
-              <div class="score-ring">
-                <span id="sideScore">742</span>
-                <small>puan</small>
+              <div class="identity-badges">
+                <span class="identity-tier" id="sideTier">Gold</span>
+                <span class="identity-score"><strong id="sideScore">742</strong> <span id="sideScoreLabel">puan</span></span>
               </div>
-              <p>Sadakat ve bozulan söz verisi Drop AI indirimlerini anlık etkiler.</p>
             </div>
           </aside>
 
@@ -96,6 +96,7 @@
               <p>Logo butonuna basıldığında Drop AI ürün, X Engine ve Drop ID verilerini eşleştirir.</p>
             </div>
             <div id="cartItems" class="cart-items"></div>
+            <section id="cartHistory" class="cart-history"></section>
           </section>
           <aside class="checkout-panel">
             <div class="panel-title">
@@ -159,6 +160,17 @@
       </section>
     </main>
 
+    <div class="intro-backdrop" id="tutorialBanner" aria-hidden="false">
+      <section class="tutorial-dialog" role="dialog" aria-modal="true" aria-labelledby="tutorialTitle" aria-describedby="tutorialText">
+        <button class="modal-close" data-close-tutorial type="button" aria-label="Kapat" title="Kapat">×</button>
+        <img src="./dd tam logo son.png" alt="Drop Deal" />
+        <span class="eyebrow" id="tutorialEyebrow">Çalışan sistem demosu</span>
+        <h2 id="tutorialTitle">Drop Deal'ı keşfet</h2>
+        <p id="tutorialText"></p>
+        <button id="closeTutorial" class="primary-action" type="button">Demoya başla</button>
+      </section>
+    </div>
+
     <div class="modal-backdrop" id="verificationModal" aria-hidden="true">
       <section class="verify-card" role="dialog" aria-modal="true" aria-labelledby="verifyTitle">
         <button class="modal-close" id="closeVerify" type="button" aria-label="Kapat">×</button>
@@ -167,6 +179,7 @@
         <h2 id="verifyTitle">Telefondaki Drop App işlemi onaylıyor</h2>
         <div class="verify-progress"><span id="verifyBar"></span></div>
         <p id="verifyText">Token eşleştiriliyor...</p>
+        <div id="verifyResult" hidden></div>
       </section>
     </div>
 
@@ -174,6 +187,13 @@
       <section class="early-modal" role="dialog" aria-modal="true" aria-labelledby="earlyTitle">
         <button class="modal-close" id="closeEarlyOrder" type="button" aria-label="Kapat">×</button>
         <div id="earlyOrderContent"></div>
+      </section>
+    </div>
+
+    <div class="modal-backdrop" id="cancelOrderModal" aria-hidden="true">
+      <section class="cancel-notification" role="dialog" aria-modal="true" aria-labelledby="cancelTitle" aria-describedby="cancelDescription">
+        <button class="modal-close" data-close-cancel type="button" aria-label="Kapat">×</button>
+        <div id="cancelOrderContent"></div>
       </section>
     </div>
 

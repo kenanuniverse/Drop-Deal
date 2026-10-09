@@ -6,6 +6,7 @@ const currency = new Intl.NumberFormat("tr-TR", {
 
 const logoPath = "./dd logo.png";
 const DATA_VERSION = "dropdeal-web-mockup-2026-10-09-local-effects";
+const DEMO_START_SCORE = 952;
 
 const categoryProfiles = [
   { name: "Elektronik", accent: "#3b7be9", icon: "PHONE", base: 9200 },
@@ -114,7 +115,7 @@ const dropId = {
   device: "iPhone 15 - Drop App",
   linkedEmail: "m***@dropid.app",
   tier: "Gold",
-  score: 742,
+  score: DEMO_START_SCORE,
   kept: 31,
   broken: 2,
   promiseRate: 94,
@@ -425,10 +426,16 @@ function init() {
   }
   state.activity = readStorage("dropdeal.activity", []);
   const savedIdentity = readStorage("dropdeal.identity", {});
-  ["score", "kept", "broken", "promiseRate", "discountAdjustment"].forEach((key) => {
+  ["kept", "broken", "promiseRate", "discountAdjustment"].forEach((key) => {
     if (Number.isFinite(savedIdentity[key])) dropId[key] = savedIdentity[key];
   });
+  // Each page load starts a new score demo without clearing order history.
+  dropId.score = DEMO_START_SCORE;
   dropId.tier = dropId.score >= 700 ? "Gold" : dropId.score >= 500 ? "Silver" : "Bronze";
+  state.cart.forEach((item) => {
+    if (item.selectedOffer) item.selectedOffer = { ...offerForDays(getProduct(item.productId), item.qty, item.selectedOffer.days), custom: item.selectedOffer.custom };
+  });
+  persistCart();
 
   bindNavigation();
   bindFilters();
